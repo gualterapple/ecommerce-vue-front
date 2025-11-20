@@ -1,17 +1,16 @@
-<script>
+<script lang="ts">
 import { obterProdutos } from '@/assets/http';
 
 export default {
   data(){
     return {
-      produtos: []
+      produtos: [] as any
     }
   },
 
   async created(){
     this.produtos = await obterProdutos();
   },
-
 };
 </script>
 
