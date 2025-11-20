@@ -1,8 +1,8 @@
 <script lang="ts">
 
-import AddProduct from '@/components/AddProduct.vue';
+import AddProduct from '@/views/AddProduct.vue';
 import Header from './components/Header.vue';
-import ProductsList from './components/ProductsList.vue';
+import ProductsList from './views/ProductsList.vue';
 
 export default {
   components: {
@@ -12,9 +12,8 @@ export default {
 </script>
 
 <template>
-<AddProduct></AddProduct>
 <Header></Header>
-<ProductsList></ProductsList>
+<router-view />
   
 </template>
 

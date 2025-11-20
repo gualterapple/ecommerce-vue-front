@@ -1,19 +1,21 @@
 <template>
   <nav>
     <ul class="navbar">
-      <li>Inicio</li>
-      <li>Produtos</li>
-      <li>Vendas</li>
+      <li>
+        <router-link to="/">Produtos</router-link>
+      </li>
+      <li><router-link to="/add">Adicionar Produto</router-link></li>
+      <li>
+        <router-link to="/add">Adicionar Produto</router-link>
+      </li>
     </ul>
   </nav>
 </template>
 
-
-
 <script lang="ts">
-  export default {
-    name: 'Header'
-  };
+export default {
+  name: "Header",
+};
 </script>
 
 <style scoped>

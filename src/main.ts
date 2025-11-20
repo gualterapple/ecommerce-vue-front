@@ -1,5 +1,8 @@
+import { createApp } from 'vue';
+import App from './App.vue';
+import roteador from '@/router';
 
-import { createApp } from 'vue'
-import App from './App.vue'
+const app = createApp(App);
 
-createApp(App).mount('#app')
+app.use(roteador); 
+app.mount('#app');
