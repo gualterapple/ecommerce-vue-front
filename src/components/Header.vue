@@ -10,7 +10,11 @@
 
 
 
-<script lang="ts"></script>
+<script lang="ts">
+  export default {
+    name: 'Header',
+  };
+</script>
 
 <style scoped>
 .navbar {

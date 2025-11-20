@@ -1,3 +1,20 @@
+<script>
+import { obterProdutos } from '@/assets/http';
+
+export default {
+  data(){
+    return {
+      produtos: []
+    }
+  },
+
+  async created(){
+    this.produtos = await obterProdutos();
+  },
+
+};
+</script>
+
 <template>
   <div class="table-container">
     <table>
@@ -8,23 +25,16 @@
           <th>Quantidade</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>Produto A</td>
-          <td>R$ 10,00</td>
-          <td>5</td>
-        </tr>
-        <tr>
-          <td>Produto B</td>
-          <td>R$ 20,00</td>
-          <td>3</td>
-        </tr>
-        <tr>
-          <td>Produto C</td>
-          <td>R$ 15,00</td>
-          <td>8</td>
+      <tbody v-if="produtos.length">
+        <tr v-for="value in produtos" :key="value.nome">
+          <td>{{value?.name}}</td>
+          <td>AO {{value?.price}}</td>
+          <td>{{value?.quantity}}</td>
         </tr>
       </tbody>
+
+      <div v-else>Não existem produtos para exibir</div>
+
     </table>
   </div>
 </template>
