@@ -1,4 +1,5 @@
 <script lang="ts">
+import api from "@/assets/http/api";
 
 export default {
   data() {
@@ -15,23 +16,20 @@ export default {
   methods: {
     async enviarProduto() {
       try {
-        const resposta = await fetch("http://localhost:8081/products", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(this.produto),
-        });
-
-        if (!resposta.ok) {
-          throw new Error("Erro ao salvar produto");
-        }
+        const resposta = await api.post(
+          "/products",
+          JSON.stringify(this.produto),
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
         this.mensagem = "Produto cadastrado com sucesso!";
         this.produto = { name: "", price: 0, quantity: 0 };
-
-      } catch (e) {
-        this.mensagem = "Falha ao cadastrar o produto.";
+      } catch (err) {
+        console.error("Erro ao carregar produtos:", err);
       }
     },
   },
@@ -71,7 +69,7 @@ export default {
   padding: 24px;
   background: #ffffff;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   max-width: 400px;
 }
 
